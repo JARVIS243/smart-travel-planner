@@ -1,0 +1,124 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Create Booking
+{% endblock %}
+
+{% block content %}
+
+<section class="page-header">
+    <div class="container text-center text-white">
+        <h1>Create Booking</h1>
+        <p>Book your next dream trip</p>
+    </div>
+</section>
+
+<section class="py-5">
+
+    <div class="container">
+
+        <div class="row justify-content-center">
+
+            <div class="col-lg-8">
+
+                <div class="auth-box">
+
+                    <form method="POST">
+
+                        {% csrf_token %}
+
+                        <div class="mb-3">
+
+                            <label>Destination</label>
+
+                            <select name="destination"
+                                    class="form-select custom-input"
+                                    required>
+
+                                {% for destination in destinations %}
+
+                                <option value="{{ destination.id }}">
+                                    {{ destination.name }}
+                                </option>
+
+                                {% endfor %}
+
+                            </select>
+
+                        </div>
+
+                        <div class="mb-3">
+
+                            <label>Travel Date</label>
+
+                            <input type="date"
+                                   name="travel_date"
+                                   class="form-control custom-input"
+                                   required>
+
+                        </div>
+
+                        <div class="mb-3">
+
+                            <label>Number of Travelers</label>
+
+                            <input type="number"
+                                   name="travelers"
+                                   class="form-control custom-input"
+                                   required>
+
+                        </div>
+
+                        <div class="mb-3">
+
+                            <label>Hotel Type</label>
+
+                            <select name="hotel_type"
+                                    class="form-select custom-input">
+
+                                <option value="standard">
+                                    Standard
+                                </option>
+
+                                <option value="deluxe">
+                                    Deluxe
+                                </option>
+
+                                <option value="premium">
+                                    Premium
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                        <div class="mb-4">
+
+                            <label>Special Request</label>
+
+                            <textarea name="special_request"
+                                      rows="5"
+                                      class="form-control custom-input"></textarea>
+
+                        </div>
+
+                        <button type="submit"
+                                class="btn btn-warning w-100">
+
+                            Confirm Booking
+
+                        </button>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

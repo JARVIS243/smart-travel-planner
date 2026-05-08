@@ -1,0 +1,194 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Home | Smart Travel Planner
+{% endblock %}
+
+{% block content %}
+
+<!-- HERO SECTION -->
+<section class="hero-section">
+
+    <div class="hero-overlay">
+
+        <div class="container">
+
+            <div class="row align-items-center min-vh-100">
+
+                <div class="col-lg-7 text-white">
+
+                    <h1 class="hero-title">
+                        Smart Travel Planner &
+                        Itinerary Builder
+                    </h1>
+
+                    <p class="hero-text">
+                        Plan personalized trips, explore amazing destinations,
+                        manage smart bookings, and get real-time travel updates
+                        all in one place.
+                    </p>
+
+                    <div class="hero-buttons">
+
+                        <a href="/destinations/"
+                           class="btn btn-warning btn-lg me-3">
+
+                            Explore Destinations
+                        </a>
+
+                        <a href="/bookings/"
+                           class="btn btn-outline-light btn-lg">
+
+                            Book Now
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- POPULAR DESTINATIONS -->
+<section class="popular-section py-5">
+
+    <div class="container">
+
+        <div class="text-center mb-5">
+
+            <h2 class="section-title">
+                Popular Destinations
+            </h2>
+
+            <p class="section-subtitle">
+                Explore the best travel locations around the world
+            </p>
+
+        </div>
+
+        <div class="row">
+
+            {% for destination in destinations %}
+
+            <div class="col-md-4 mb-4">
+
+                <div class="card destination-card h-100">
+
+                    {% if destination.image %}
+                    <img src="{{ destination.image.url }}"
+                         class="card-img-top"
+                         alt="{{ destination.name }}">
+                    {% endif %}
+
+                    <div class="card-body">
+
+                        <h4 class="card-title">
+                            {{ destination.name }}
+                        </h4>
+
+                        <p class="country-text">
+                            <i class="fa-solid fa-location-dot"></i>
+                            {{ destination.country }}
+                        </p>
+
+                        <p class="card-text">
+                            {{ destination.description|truncatewords:20 }}
+                        </p>
+
+                        <div class="visit-time">
+
+                            Best Time:
+                            {{ destination.best_time_to_visit }}
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            {% empty %}
+
+            <div class="col-12 text-center">
+
+                <h4>No Destinations Added Yet</h4>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- FEATURES SECTION -->
+<section class="features-section">
+
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-md-4 mb-4">
+
+                <div class="feature-box">
+
+                    <i class="fa-solid fa-map-location-dot"></i>
+
+                    <h4>Smart Planning</h4>
+
+                    <p>
+                        Create intelligent travel plans with optimized schedules.
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-4 mb-4">
+
+                <div class="feature-box">
+
+                    <i class="fa-solid fa-hotel"></i>
+
+                    <h4>Easy Bookings</h4>
+
+                    <p>
+                        Find hotels, transport, and travel booking options.
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-4 mb-4">
+
+                <div class="feature-box">
+
+                    <i class="fa-solid fa-bell"></i>
+
+                    <h4>Travel Updates</h4>
+
+                    <p>
+                        Get real-time travel alerts and destination updates.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

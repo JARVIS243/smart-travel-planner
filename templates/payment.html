@@ -1,0 +1,143 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Payment
+{% endblock %}
+
+{% block content %}
+
+<section class="page-header">
+
+    <div class="container text-center text-white">
+
+        <h1>
+            Secure Payment
+        </h1>
+
+        <p>
+            Complete your booking payment
+        </p>
+
+    </div>
+
+</section>
+
+<section class="py-5">
+
+    <div class="container">
+
+        <div class="row justify-content-center">
+
+            <div class="col-lg-6">
+
+                <div class="auth-box">
+
+                    <!-- TITLE -->
+                    <h3 class="mb-4 text-center">
+
+                        <i class="fa-solid fa-credit-card"></i>
+
+                        Payment Details
+
+                    </h3>
+
+                    <!-- BOOKING DETAILS -->
+                    <div class="mb-4 text-center">
+
+                        <h5 class="mb-3">
+
+                            <i class="fa-solid fa-location-dot text-warning"></i>
+
+                            Destination:
+                            {{ booking.destination.name }}
+
+                        </h5>
+
+                        <h5 class="mb-3">
+
+                            <i class="fa-solid fa-users text-info"></i>
+
+                            Travelers:
+                            {{ booking.travelers }}
+
+                        </h5>
+
+                        <h4 class="mt-4 text-warning fw-bold">
+
+                            Total Amount:
+                            ₹{{ amount }}
+
+                        </h4>
+
+                    </div>
+
+                    <!-- GPay QR -->
+                    <div class="text-center my-4">
+
+                        <h5 class="mb-4">
+
+                            <i class="fa-brands fa-google-pay"></i>
+
+                            Scan & Pay with GPay
+
+                        </h5>
+
+                        <img src="{% static 'images/gpay-qr.png' %}"
+                             alt="GPay QR Code"
+                             class="img-fluid rounded-4 shadow-lg border border-light"
+                             style="max-width:260px;">
+
+                        <p class="mt-4 text-warning">
+
+                            Scan the QR code using Google Pay,
+                            PhonePe, Paytm or any UPI app.
+
+                        </p>
+
+                    </div>
+
+                    <!-- PAYMENT FORM -->
+                    <form method="POST">
+
+                        {% csrf_token %}
+
+                        <input type="hidden"
+                               name="payment_method"
+                               value="GPay QR">
+
+                        <button type="submit"
+                                class="btn btn-success w-100 rounded-pill py-3 fw-bold">
+
+                            <i class="fa-solid fa-circle-check"></i>
+
+                            I Have Paid
+
+                        </button>
+
+                    </form>
+
+                    <!-- SECURITY -->
+                    <div class="text-center mt-4">
+
+                        <small class="text-light">
+
+                            <i class="fa-solid fa-lock"></i>
+
+                            Secure Payment Gateway
+
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

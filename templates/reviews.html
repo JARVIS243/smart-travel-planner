@@ -1,0 +1,143 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Reviews
+{% endblock %}
+
+{% block content %}
+
+<section class="page-header">
+    <div class="container text-center text-white">
+        <h1>Traveler Reviews</h1>
+        <p>Share your travel experience</p>
+    </div>
+</section>
+
+<section class="py-5">
+
+    <div class="container">
+
+        <!-- REVIEW FORM -->
+        <div class="auth-box mb-5">
+
+            <h2 class="mb-4 text-center">
+                Add Review
+            </h2>
+
+            <form method="POST">
+
+                {% csrf_token %}
+
+                <div class="mb-3">
+
+                    <label>Destination</label>
+
+                    <select name="destination"
+                            class="form-select custom-input"
+                            required>
+
+                        {% for destination in destinations %}
+
+                        <option value="{{ destination.id }}">
+                            {{ destination.name }}
+                        </option>
+
+                        {% endfor %}
+
+                    </select>
+
+                </div>
+
+                <div class="mb-3">
+
+                    <label>Rating</label>
+
+                    <select name="rating"
+                            class="form-select custom-input"
+                            required>
+
+                        <option value="5">⭐⭐⭐⭐⭐</option>
+                        <option value="4">⭐⭐⭐⭐</option>
+                        <option value="3">⭐⭐⭐</option>
+                        <option value="2">⭐⭐</option>
+                        <option value="1">⭐</option>
+
+                    </select>
+
+                </div>
+
+                <div class="mb-4">
+
+                    <label>Comment</label>
+
+                    <textarea name="comment"
+                              rows="5"
+                              class="form-control custom-input"
+                              required></textarea>
+
+                </div>
+
+                <button type="submit"
+                        class="btn btn-warning w-100">
+
+                    Submit Review
+
+                </button>
+
+            </form>
+
+        </div>
+
+        <!-- REVIEWS -->
+        <div class="row">
+
+            {% for review in reviews %}
+
+            <div class="col-md-6 mb-4">
+
+                <div class="update-box">
+
+                    <h4>
+                        {{ review.destination.name }}
+                    </h4>
+
+                    <p>
+                        <strong>User:</strong>
+                        {{ review.user.username }}
+                    </p>
+
+                    <p>
+
+                        {% for i in "12345" %}
+
+                            {% if forloop.counter <= review.rating %}
+
+                                ⭐
+
+                            {% endif %}
+
+                        {% endfor %}
+
+                    </p>
+
+                    <p>
+                        {{ review.comment }}
+                    </p>
+
+                    <small>
+                        {{ review.created_at }}
+                    </small>
+
+                </div>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Itinerary | Smart Travel Planner
+{% endblock %}
+
+{% block content %}
+
+<section class="page-header">
+    <div class="container text-center text-white">
+        <h1>Your Smart Itinerary</h1>
+        <p>View day-wise activities, locations, and travel schedules.</p>
+    </div>
+</section>
+
+<section class="itinerary-section py-5">
+    <div class="container">
+
+        <div class="row">
+
+            {% for item in itineraries %}
+
+            <div class="col-lg-6 mb-4">
+                <div class="itinerary-box">
+
+                    <div class="day-badge">
+                        Day {{ item.day }}
+                    </div>
+
+                    <h4>{{ item.activity }}</h4>
+
+                    <p>
+                        <i class="fa-solid fa-location-dot"></i>
+                        {{ item.location }}
+                    </p>
+
+                    <p>
+                        <i class="fa-solid fa-clock"></i>
+                        {{ item.time }}
+                    </p>
+
+                    <p>
+                        <strong>Trip:</strong>
+                        {{ item.trip }}
+                    </p>
+
+                </div>
+            </div>
+
+            {% empty %}
+
+            <div class="col-12 text-center">
+                <h4>No itinerary added yet.</h4>
+                <p>Add itinerary details from Django admin panel.</p>
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+</section>
+
+{% endblock %}

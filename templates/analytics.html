@@ -1,0 +1,132 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Analytics Dashboard
+{% endblock %}
+
+{% block content %}
+
+<section class="page-header">
+
+    <div class="container text-center text-white">
+
+        <h1>
+            Analytics Dashboard
+        </h1>
+
+        <p>
+            Your travel activity overview
+        </p>
+
+    </div>
+
+</section>
+
+<section class="dashboard-section py-5">
+
+    <div class="container">
+
+        <div class="row">
+
+            <!-- TOTAL TRIPS -->
+            <div class="col-md-4 mb-4">
+
+                <div class="dashboard-card">
+
+                    <i class="fa-solid fa-route"></i>
+
+                    <h2>
+                        {{ total_trips }}
+                    </h2>
+
+                    <h4>
+                        Total Trips
+                    </h4>
+
+                </div>
+
+            </div>
+
+            <!-- BOOKINGS -->
+            <div class="col-md-4 mb-4">
+
+                <div class="dashboard-card">
+
+                    <i class="fa-solid fa-ticket"></i>
+
+                    <h2>
+                        {{ total_bookings }}
+                    </h2>
+
+                    <h4>
+                        Total Bookings
+                    </h4>
+
+                </div>
+
+            </div>
+
+            <!-- REVIEWS -->
+            <div class="col-md-4 mb-4">
+
+                <div class="dashboard-card">
+
+                    <i class="fa-solid fa-star"></i>
+
+                    <h2>
+                        {{ total_reviews }}
+                    </h2>
+
+                    <h4>
+                        Reviews Added
+                    </h4>
+
+                </div>
+
+            </div>
+
+            <!-- PENDING -->
+            <div class="col-md-6 mb-4">
+
+                <div class="dashboard-card">
+
+                    <i class="fa-solid fa-clock"></i>
+
+                    <h2>
+                        {{ pending_bookings }}
+                    </h2>
+
+                    <h4>
+                        Pending Bookings
+                    </h4>
+
+                </div>
+
+            </div>
+
+            <!-- CONFIRMED -->
+            <div class="col-md-6 mb-4">
+
+                <div class="dashboard-card">
+
+                    <i class="fa-solid fa-circle-check"></i>
+
+                    <h2>
+                        {{ confirmed_bookings }}
+                    </h2>
+
+                    <h4>
+                        Confirmed Bookings
+                    </h4>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

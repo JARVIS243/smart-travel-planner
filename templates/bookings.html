@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Bookings | Smart Travel Planner
+{% endblock %}
+
+{% block content %}
+
+<section class="page-header">
+    <div class="container text-center text-white">
+
+        <h1>Travel Booking Options</h1>
+
+        <p>
+            Find hotels, flights, and transport booking services.
+        </p>
+
+    </div>
+</section>
+
+<section class="booking-section py-5">
+
+    <div class="container">
+
+        <div class="row">
+
+            {% for booking in bookings %}
+
+            <div class="col-lg-4 col-md-6 mb-4">
+
+                <div class="booking-card h-100">
+
+                    <div class="booking-icon">
+                        <i class="fa-solid fa-plane-departure"></i>
+                    </div>
+
+                    <h4>
+                        {{ booking.booking_type }}
+                    </h4>
+
+                    <p>
+                        <strong>Provider:</strong>
+                        {{ booking.provider }}
+                    </p>
+
+                    <p>
+                        <strong>Price:</strong>
+                        ₹{{ booking.price }}
+                    </p>
+
+                    <p>
+                        <strong>Trip:</strong>
+                        {{ booking.trip }}
+                    </p>
+
+                    <a href="{{ booking.link }}"
+                       target="_blank"
+                       class="btn btn-primary mt-3">
+
+                        Book Now
+                    </a>
+
+                </div>
+
+            </div>
+
+            {% empty %}
+
+            <div class="col-12 text-center">
+
+                <h4>No booking options available.</h4>
+
+                <p>
+                    Add booking options from Django admin panel.
+                </p>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

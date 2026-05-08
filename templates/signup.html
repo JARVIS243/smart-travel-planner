@@ -1,0 +1,203 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Signup | Smart Travel Planner
+{% endblock %}
+
+{% block content %}
+
+<section class="auth-section">
+
+    <div class="auth-overlay">
+
+        <div class="container">
+
+            <div class="row justify-content-center align-items-center min-vh-100">
+
+                <div class="col-lg-6">
+
+                    <div class="auth-box">
+
+                        <div class="text-center mb-4">
+
+                            <h1 class="auth-title">
+                                Create Account
+                            </h1>
+
+                            <p class="auth-subtitle">
+                                Join Smart Travel Planner
+                            </p>
+
+                        </div>
+
+                        <!-- MESSAGES -->
+                        {% if messages %}
+
+                            {% for message in messages %}
+
+                                <div class="alert alert-warning">
+                                    {{ message }}
+                                </div>
+
+                            {% endfor %}
+
+                        {% endif %}
+
+                        <!-- FORM -->
+                        <form method="POST">
+
+                            {% csrf_token %}
+
+                            <!-- USERNAME -->
+                            <div class="mb-3">
+
+                                <label class="form-label">
+                                    Username
+                                </label>
+
+                                <input type="text"
+                                       name="username"
+                                       class="form-control custom-input"
+                                       required>
+
+                            </div>
+
+                            <!-- EMAIL -->
+                            <div class="mb-3">
+
+                                <label class="form-label">
+                                    Email
+                                </label>
+
+                                <input type="email"
+                                       name="email"
+                                       class="form-control custom-input"
+                                       required>
+
+                            </div>
+
+                            <!-- PHONE -->
+                            <div class="mb-3">
+
+                                <label class="form-label">
+                                    Phone
+                                </label>
+
+                                <input type="text"
+                                       name="phone"
+                                       class="form-control custom-input"
+                                       required>
+
+                            </div>
+
+                            <!-- PLACE -->
+                            <div class="mb-3">
+
+                                <label class="form-label">
+                                    Place
+                                </label>
+
+                                <input type="text"
+                                       name="place"
+                                       class="form-control custom-input"
+                                       required>
+
+                            </div>
+
+                            <!-- ROLE -->
+                            <div class="mb-3">
+
+                                <label class="form-label">
+                                    Role
+                                </label>
+
+                                <select name="role"
+                                        class="form-select custom-input"
+                                        required>
+
+                                    <option value="">
+                                        Select Role
+                                    </option>
+
+                                    <option value="traveler">
+                                        Traveler
+                                    </option>
+
+                                    <option value="staff">
+                                        Staff
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+                            <!-- PASSWORD -->
+                            <div class="mb-3">
+
+                                <label class="form-label">
+                                    Password
+                                </label>
+
+                                <input type="password"
+                                       name="password"
+                                       class="form-control custom-input"
+                                       required>
+
+                            </div>
+
+                            <!-- CONFIRM PASSWORD -->
+                            <div class="mb-4">
+
+                                <label class="form-label">
+                                    Confirm Password
+                                </label>
+
+                                <input type="password"
+                                       name="confirm_password"
+                                       class="form-control custom-input"
+                                       required>
+
+                            </div>
+
+                            <!-- BUTTON -->
+                            <button type="submit"
+                                    class="btn btn-warning w-100 auth-btn">
+
+                                Create Account
+
+                            </button>
+
+                        </form>
+
+                        <!-- LOGIN LINK -->
+                        <div class="text-center mt-4">
+
+                            <p>
+
+                                Already have an account?
+
+                                <a href="/login/"
+                                   class="auth-link">
+
+                                    Login
+
+                                </a>
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

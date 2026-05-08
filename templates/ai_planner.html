@@ -1,0 +1,142 @@
+{% extends 'base.html' %}
+
+{% block title %}
+AI Trip Planner
+{% endblock %}
+
+{% block content %}
+
+<section class="page-header">
+
+    <div class="container text-center text-white">
+
+        <h1>
+            AI Trip Planner
+        </h1>
+
+        <p>
+            Generate smart travel plans instantly
+        </p>
+
+    </div>
+
+</section>
+
+<section class="py-5">
+
+    <div class="container">
+
+        <div class="row justify-content-center">
+
+            <div class="col-lg-8">
+
+                <div class="auth-box">
+
+                    <form method="POST">
+
+                        {% csrf_token %}
+
+                        <!-- DESTINATION -->
+                        <div class="mb-3">
+
+                            <label>
+                                Destination
+                            </label>
+
+                            <input type="text"
+                                   name="destination"
+                                   class="form-control custom-input"
+                                   placeholder="Enter destination"
+                                   required>
+
+                        </div>
+
+                        <!-- BUDGET -->
+                        <div class="mb-3">
+
+                            <label>
+                                Budget
+                            </label>
+
+                            <input type="number"
+                                   name="budget"
+                                   class="form-control custom-input"
+                                   placeholder="Enter budget"
+                                   required>
+
+                        </div>
+
+                        <!-- DAYS -->
+                        <div class="mb-3">
+
+                            <label>
+                                Number of Days
+                            </label>
+
+                            <input type="number"
+                                   name="days"
+                                   class="form-control custom-input"
+                                   placeholder="Enter days"
+                                   required>
+
+                        </div>
+
+                        <!-- INTERESTS -->
+                        <div class="mb-4">
+
+                            <label>
+                                Interests
+                            </label>
+
+                            <textarea name="interests"
+                                      rows="4"
+                                      class="form-control custom-input"
+                                      placeholder="Adventure, Beaches, Food, Nature..."
+                                      required></textarea>
+
+                        </div>
+
+                        <!-- BUTTON -->
+                        <button type="submit"
+                                class="btn btn-warning w-100">
+
+                            <i class="fa-solid fa-robot"></i>
+
+                            Generate AI Plan
+
+                        </button>
+
+                    </form>
+
+                </div>
+
+                <!-- AI RESULT -->
+                {% if trip_plan %}
+
+                <div class="update-box mt-5">
+
+                    <h3 class="mb-4">
+
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+
+                        AI Generated Plan
+
+                    </h3>
+
+                    <pre style="white-space: pre-wrap;
+                                font-family: Poppins;
+                                font-size:16px;">{{ trip_plan }}</pre>
+
+                </div>
+
+                {% endif %}
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}
